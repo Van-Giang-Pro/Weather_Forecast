@@ -5,3 +5,5 @@
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/Wheather Forecast.iml
+/venv/
+/.idea/Weather_Forecast.iml
