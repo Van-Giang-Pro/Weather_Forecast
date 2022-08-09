@@ -19,7 +19,10 @@ class Weather:
 		return self.data["list"][:4]
 
 	def next_12h_simplified(self):
-		return self.data["list"][0]
+		simple_data = []
+		for dicty in self.data['list'][:4]:
+			simple_data.append((dicty['dt_txt'], dicty['main']['temp'], dicty['weather'][0]['description']))
+		return simple_data
 
 weather = Weather(apikey="be63187149284bb1bae3e00e08f31774", city="Di An")
 pprint.pprint(weather.next_12h_simplified())
