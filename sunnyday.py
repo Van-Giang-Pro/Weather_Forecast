@@ -1,4 +1,4 @@
-import requests
+import requests, pprint
 
 
 class Weather:
@@ -16,10 +16,10 @@ class Weather:
 			raise TypeError("Provide Either A City Or Lat And Lon Arguments")
 
 	def next_12h(self):
-		pass
+		return self.data["list"][:4]
 
 	def next_12h_simplified(self):
-		pass
+		return self.data["list"][0]
 
 weather = Weather(apikey="be63187149284bb1bae3e00e08f31774", city="Di An")
-print(weather.data)
+pprint.pprint(weather.next_12h_simplified())
