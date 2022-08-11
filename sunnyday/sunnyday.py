@@ -1,4 +1,4 @@
-import requests, pprint
+import requests
 
 
 class Weather:
@@ -24,7 +24,11 @@ class Weather:
 
 	# Get simplified weather data for next 12 hours:
 	>>> weather2.next_12h_simplified()
+	
+	# Sample URL To Get Sky Condition Icons:
+	>>> https://openweathermap.org/img/wn/10d@2x.png
 	"""
+
 	def __init__(self, apikey, city, lat=None, lon=None):
 		if city:
 			url = f"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={apikey}&units=metric"
@@ -52,5 +56,6 @@ class Weather:
 		"""
 		simple_data = []
 		for dicty in self.data['list'][:4]:
-			simple_data.append((dicty['dt_txt'], dicty['main']['temp'], dicty['weather'][0]['description']))
+			simple_data.append((dicty['dt_txt'], dicty['main']['temp'], dicty['weather'][0]['description'],
+			                    dicty['weather'][0]['icon']))
 		return simple_data
